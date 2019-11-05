@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>All Posts</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <th:block th:replace="fragments/header :: main-header"></th:block>
 </head>
 <body class="bg-secondary">
 
 <nav th:replace="fragments/navbar :: navbar"></nav>
-<header th:replace="fragments/header :: header-index"></header>
 
 <div class="container">
-    <div th:each="post : ${posts}" class="card text-center text-white bg-dark mb-3" style="max-width: 18rem;">
-        <div class="card-header">Header</div>
-        <h3 th:text="${post.title}" class="card-title"></h3>
-        <p th:text="${post.body}" class="card-text"></p>
-        <input type="hidden" name="post" th:value="${post.id}">
+    <div class="row">
+        <div th:each="post : ${posts}" class="card text-center text-white bg-dark mx-auto mb-3 col-4" style="max-width: 18rem;">
+            <div class="card-header">Header</div>
+            <h3 th:text="${post.title}" class="card-title"></h3>
+            <p th:text="${post.body}" class="card-text"></p>
+            <input type="hidden" name="post" th:value="${post.id}">
+        </div>
     </div>
 </div>
 

@@ -10,20 +10,25 @@ import java.util.ArrayList;
 @Controller
 public class PostController {
 
+    ArrayList<Post> postList;
+
+    public PostController() {
+        postList = new ArrayList<>();
+
+        postList.add(new Post(1, "Test Title 1", "Test body 1"));
+        postList.add(new Post(2, "Test Title 2", "Test body 2"));
+        postList.add(new Post(3, "Test Title 3", "Test body 3"));
+    }
+
     @GetMapping("/posts")
     public String index(Model vModel){
-        ArrayList<Post> postList = new ArrayList<>();
-        postList.add(new Post(4, "Test Title 1", "Test body 1"));
-        postList.add(new Post(5, "Test Title 2", "Test body 2"));
         vModel.addAttribute("posts", postList);
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String viewIndividualPost(@PathVariable long id, Model vModel){
-        Post newPost = new Post(id, "The Green Tree", "I have no clue what the title is all about!");
-        vModel.addAttribute("post", newPost);
-//        vModel.addAttribute("id", id);
+        vModel.addAttribute("post", postList.get((int)id-1));
         return "posts/show";
     }
 

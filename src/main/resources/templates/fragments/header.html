@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
-    <meta charset="UTF-8" />
-    <title>Home</title>
-</head>
-<body>
 
-<div th:fragment="header-index" class="page-header text-center">
-    <h1 class=" text-white display-4">All Posts</h1>
-</div>
-
-<div th:fragment="header-show" class="page-header text-center">
-    <h1 class=" text-white display-4">Here's your post</h1>
-</div>
-
-
-</body>
-</html>
+<th:block th:fragment="main-header">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</th:block>

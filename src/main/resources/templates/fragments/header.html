@@ -3,18 +3,16 @@
 <head th:fragment="head">
     <meta charset="UTF-8" />
     <title>Home</title>
-    <!-- include stylesheets, etc here -->
 </head>
 <body>
-<nav th:fragment="header">
-    <!-- awesome header goes here -->
-</nav>
 
+<div th:fragment="header-index" class="page-header text-center">
+    <h1 class=" text-white display-4">All Posts</h1>
+</div>
 
-
-
-
-
+<div th:fragment="header-show" class="page-header text-center">
+    <h1 class=" text-white display-4">Here's your post</h1>
+</div>
 
 
 </body>

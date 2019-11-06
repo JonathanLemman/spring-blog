@@ -12,7 +12,7 @@
 <div class="container">
     <div class="row">
         <div th:each="post : ${posts}" class="card text-center text-white bg-dark mx-auto mb-3 col-4" style="max-width: 18rem;">
-            <a href="#">
+            <a th:href="@{'/posts/' + ${post.id}}">
                 <div class="card-header">Header</div>
                 <h3 th:text="${post.title}" class="card-title"></h3>
                 <p th:text="${post.body}" class="card-text"></p>

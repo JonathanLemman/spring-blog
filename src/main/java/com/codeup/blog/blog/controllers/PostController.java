@@ -43,15 +43,36 @@ public class PostController {
 
 
 
-    @GetMapping("/posts/edit")
-    public String editForm(){
+    @GetMapping("/posts/{id}/edit")
+    public String editForm(@PathVariable long id){
         return "posts/edit";
     }
 
-    @PostMapping("/posts/edit")
+    @PostMapping("/posts/{id}/edit")
     public String editPost(@PathVariable long id, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
+        Post oldPost = postDao.getOne(id);
+        oldPost.setTitle(title);
+        oldPost.setTitle(body);
+        postDao.save(oldPost);
         return "redirect:/posts";
     }
+
+
+
+//    @GetMapping("/ads/{id}/edit")
+//    public String edit(@PathVariable long id, Model viewModel) {
+//        viewModel.addAttribute("ad", adDao.getOne(id));
+//        return "ads/edit";
+//    }
+//
+//    @PostMapping("/ads/{id}/edit")
+//    public String update(@PathVariable long id, @RequestParam String title, @RequestParam String description) {
+//        Ad oldAd = adDao.getOne(id);
+//        oldAd.setTitle(title);
+//        oldAd.setDescription(description);
+//        adDao.save(oldAd);
+//        return "redirect:/ads/" + id;
+//    }
 
 
 
@@ -67,12 +88,6 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    /* It updates model object. */
-//    @RequestMapping(value="/editsave",method = RequestMethod.POST)
-//    public String editsave(@ModelAttribute("emp") Emp emp){
-//        dao.update(emp);
-//        return "redirect:/viewemp";
-//    }
 
 
 }

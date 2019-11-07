@@ -2,6 +2,7 @@ package com.codeup.blog.blog.models;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")
@@ -19,6 +20,9 @@ public class Post {
 
     @OneToOne
     private PostDetails postDetails;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<PostImage> postImages;
 
     public Post(long id, String title, String body) {
         this.id = id;
@@ -63,5 +67,13 @@ public class Post {
 
     public void setPostDetails(PostDetails postDetails) {
         this.postDetails = postDetails;
+    }
+
+    public List<PostImage> getPostImages() {
+        return postImages;
+    }
+
+    public void setPostImages(List<PostImage> postImages) {
+        this.postImages = postImages;
     }
 }

@@ -14,10 +14,6 @@
         <div class="card-header">Header</div>
         <h1 th:text="${post.title}" class="card-title"></h1>
         <p th:text="${post.body}" class="card-text"></p>
-
-        <div th:each="post : ${post.postImages}">
-            <img th:src="${post.url}" alt="" style="height: 400px">
-        </div>
         <input type="hidden" name="post" th:value="${post.id}">
     </div>
 </div>

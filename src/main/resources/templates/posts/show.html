@@ -16,6 +16,7 @@
         <p th:text="${post.body}" class="card-text"></p>
 
         <div th:each="post : ${post.postImages}">
+            <h4 th:text="${post.imageTitle}"></h4>
             <img th:src="${post.url}" alt="" style="height: 400px">
         </div>
         <input type="hidden" name="post" th:value="${post.id}">

@@ -17,6 +17,9 @@ public class Post {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
 
+    @OneToOne
+    private PostDetails postDetails;
+
     public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
@@ -52,5 +55,13 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public PostDetails getPostDetails() {
+        return postDetails;
+    }
+
+    public void setPostDetails(PostDetails postDetails) {
+        this.postDetails = postDetails;
     }
 }

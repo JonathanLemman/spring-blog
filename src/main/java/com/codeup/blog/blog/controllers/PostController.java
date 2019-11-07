@@ -42,7 +42,6 @@ public class PostController {
     }
 
 
-
     @GetMapping("/posts/edit")
     public String editForm(){
         return "posts/edit";
@@ -52,8 +51,6 @@ public class PostController {
     public String editPost(@PathVariable long id, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
         return "redirect:/posts";
     }
-
-
 
 //    @PostMapping("/posts/delete")
 //    public String deletePost(@RequestParam(name = "post") long id){
@@ -67,12 +64,14 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    /* It updates model object. */
-//    @RequestMapping(value="/editsave",method = RequestMethod.POST)
-//    public String editsave(@ModelAttribute("emp") Emp emp){
-//        dao.update(emp);
-//        return "redirect:/viewemp";
-//    }
+
+    @GetMapping("/posts/{id}/history")
+    public String historyOfPost(@PathVariable long id, Model vModel){
+        vModel.addAttribute("post", postDao.getOne(id));
+        return "posts/history";
+    }
+
+
 
 
 }

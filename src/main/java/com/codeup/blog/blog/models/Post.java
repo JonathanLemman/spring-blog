@@ -24,6 +24,14 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<PostImage> postImages;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name="post_tag",
+            joinColumns={@JoinColumn(name="post_id")},
+            inverseJoinColumns={@JoinColumn(name="tag_id")}
+    )
+    private List<Tag> postTags;
+
     public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;

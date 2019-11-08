@@ -43,6 +43,7 @@ public class PostController {
 
 
 
+
     @GetMapping("/posts/{id}/edit")
     public String editForm(@PathVariable long id){
         return "posts/edit";
@@ -76,6 +77,7 @@ public class PostController {
 
 
 
+
 //    @PostMapping("/posts/delete")
 //    public String deletePost(@RequestParam(name = "post") long id){
 //        postDao.deleteById(id);
@@ -88,6 +90,12 @@ public class PostController {
         return "redirect:/posts";
     }
 
+
+    @GetMapping("/posts/{id}/history")
+    public String historyOfPost(@PathVariable long id, Model vModel){
+        vModel.addAttribute("post", postDao.getOne(id));
+        return "posts/history";
+    }
 
 
 }

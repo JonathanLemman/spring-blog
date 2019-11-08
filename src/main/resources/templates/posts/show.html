@@ -14,16 +14,34 @@
         <div class="card-header">Header</div>
         <h1 th:text="${post.title}" class="card-title"></h1>
         <p th:text="${post.body}" class="card-text"></p>
-
         <div th:each="post : ${post.postImages}">
             <h4 th:text="${post.imageTitle}"></h4>
             <img th:src="${post.url}" alt="" style="height: 400px">
         </div>
         <input type="hidden" name="post" th:value="${post.id}">
-
+        <div th:text="'Created by: ' + ${post.user.email}" class="card-footer text-muted">
+            Created by: UsersEmail
+        </div>
     </div>
-
 </div>
+
+
+
+<!--<div class="card mb-3" style="max-width: 540px;">-->
+<!--    <div class="row no-gutters">-->
+<!--        <div class="col-md-4">-->
+<!--            <img src="..." class="card-img" alt="...">-->
+<!--        </div>-->
+<!--        <div class="col-md-8">-->
+<!--            <div class="card-body">-->
+<!--                <h5 class="card-title">Card title</h5>-->
+<!--                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>-->
+<!--                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
 
 
 

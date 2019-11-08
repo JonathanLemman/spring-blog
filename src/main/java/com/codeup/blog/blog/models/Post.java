@@ -24,6 +24,10 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<PostImage> postImages;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="post_tag",
@@ -91,5 +95,13 @@ public class Post {
 
     public void setPostTags(List<Tag> postTags) {
         this.postTags = postTags;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -19,9 +19,6 @@
                 <h3 th:text="${post.title}" class="card-title"></h3>
                 <p th:text="${post.body}" class="card-text"></p>
                 <input type="hidden" name="post" th:value="${post.id}">
-    <!--            <form th:action="@{'/posts/'+ ${post.id} + '/delete'}" method="post">-->
-    <!--                <button class="btn btn-danger">Delete</button>-->
-    <!--            </form>-->
             </a>
         </div>
     </div>

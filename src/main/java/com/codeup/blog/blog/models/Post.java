@@ -84,4 +84,12 @@ public class Post {
     public void setPostImages(List<PostImage> postImages) {
         this.postImages = postImages;
     }
+
+    public List<Tag> getPostTags() {
+        return postTags;
+    }
+
+    public void setPostTags(List<Tag> postTags) {
+        this.postTags = postTags;
+    }
 }

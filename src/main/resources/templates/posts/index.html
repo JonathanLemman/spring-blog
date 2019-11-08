@@ -13,7 +13,9 @@
     <div class="row">
         <div th:each="post : ${posts}" class="card text-center text-white bg-dark mx-auto mb-3 col-4" style="max-width: 18rem;">
             <a th:href="@{'/posts/' + ${post.id}}">
-                <div class="card-header">Header</div>
+                <div class="card-header" >
+                    <span th:each="post : ${post.postTags}" th:text="${post.name}" class="badge badge-pill badge-light mx-2"></span>
+                </div>
                 <h3 th:text="${post.title}" class="card-title"></h3>
                 <p th:text="${post.body}" class="card-text"></p>
                 <input type="hidden" name="post" th:value="${post.id}">

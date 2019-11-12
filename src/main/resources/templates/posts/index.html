@@ -13,7 +13,7 @@
     <div class="row">
         <div th:each="post : ${posts}" class="card text-center text-white bg-dark mx-auto mb-3 col-4" style="max-width: 18rem;">
             <a th:href="@{'/posts/' + ${post.id}}">
-                <div class="card-header" >
+                <div class="card-header">
                     <span th:each="tag : ${post.postTags}" th:text="${tag.name}" class="badge badge-pill badge-light mx-2"></span>
                 </div>
                 <h3 th:text="${post.title}" class="card-title"></h3>

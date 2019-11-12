@@ -11,12 +11,12 @@
 
 <div class="container">
 
-    <form action="/posts/create" method="post">
+    <form th:action="@{/posts/create}" th:method="post" th:object="${post}">
         Title:
-        <input name="title" />
+        <input th:field="*{title}" />
         <br />
         Description:
-        <input name="description" />
+        <input th:field="*{body}" />
         <br />
         <input type="submit" />
     </form>

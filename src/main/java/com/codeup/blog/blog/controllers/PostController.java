@@ -33,22 +33,21 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String showForm(){
+    public String showForm(Model vModel){
+        vModel.addAttribute("post", new Post());
         return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String createPost(@RequestParam String title, @RequestParam String body){
-        return "create a new post";
+    public String createPost(@ModelAttribute Post post){
+        post.setUser(userDao.getOne(1L));
+        postDao.save(post);
+        return "redirect:/posts";
     }
 
-
-
-
     @GetMapping("/posts/{id}/edit")
-    public String editForm(@PathVariable long id){
+    public String editForm(@PathVariable long id, Model vModel){
+        vModel.addAttribute("post", postDao.getOne(id));
         return "posts/edit";
     }
 
@@ -56,36 +55,10 @@ public class PostController {
     public String editPost(@PathVariable long id, @RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
         Post oldPost = postDao.getOne(id);
         oldPost.setTitle(title);
-        oldPost.setTitle(body);
+        oldPost.setBody(body);
         postDao.save(oldPost);
         return "redirect:/posts";
     }
-
-
-
-//    @GetMapping("/ads/{id}/edit")
-//    public String edit(@PathVariable long id, Model viewModel) {
-//        viewModel.addAttribute("ad", adDao.getOne(id));
-//        return "ads/edit";
-//    }
-//
-//    @PostMapping("/ads/{id}/edit")
-//    public String update(@PathVariable long id, @RequestParam String title, @RequestParam String description) {
-//        Ad oldAd = adDao.getOne(id);
-//        oldAd.setTitle(title);
-//        oldAd.setDescription(description);
-//        adDao.save(oldAd);
-//        return "redirect:/ads/" + id;
-//    }
-
-
-
-
-//    @PostMapping("/posts/delete")
-//    public String deletePost(@RequestParam(name = "post") long id){
-//        postDao.deleteById(id);
-//        return "redirect:/posts";
-//    }
 
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@PathVariable long id){

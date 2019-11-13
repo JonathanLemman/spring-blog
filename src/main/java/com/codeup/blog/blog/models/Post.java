@@ -1,5 +1,7 @@
 package com.codeup.blog.blog.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.annotation.processing.Generated;
 import javax.persistence.*;
 import java.util.List;
@@ -25,6 +27,7 @@ public class Post {
     private List<PostImage> postImages;
 
     @ManyToOne
+    @JsonManagedReference
     @JoinColumn(name = "user_id")
     private User user;
 

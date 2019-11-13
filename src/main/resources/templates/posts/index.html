@@ -3,29 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>All Posts</title>
-    <th:block th:replace="fragments/header :: main-header" />
+    <th:block th:replace="fragments/header :: main-header"/>
 </head>
 <body>
 
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
 <div class="container">
+
     <div class="row">
-        <div th:each="post : ${posts}" class="card text-center text-white bg-dark mx-auto mb-3 col-4" style="max-width: 18rem;">
-            <a th:href="@{'/posts/' + ${post.id}}">
-                <div class="card-header">
-                    <span th:each="tag : ${post.postTags}" th:text="${tag.name}" class="badge badge-pill badge-light mx-2"></span>
+
+        <div class="col-md-8 mb-3">
+            <h1 class="my-4 text-white"><span class="blog display-4">Blog</span>
+                <small class="c-card">All Posts</small>
+            </h1>
+            <div th:each="post : ${posts}" class="card text-center text-white c-card mx-auto mb-4 test">
+                <a th:href="@{'/posts/' + ${post.id}}">
+                    <div class="card-body">
+                        <span th:each="tag : ${post.postTags}" th:text="${tag.name}"
+                              class="badge badge-pill text-white c-badge mx-2"></span>
+
+                        <h3 th:text="${post.title}" class="card-title"></h3>
+                        <p th:text="${post.body}" class="card-text"></p>
+                        <input type="hidden" name="post" th:value="${post.id}">
+                    </div>
+                    <div th:text="'Created by: ' + ${post.user.email}" class="card-footer">
+                        Created by: UsersEmail
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4 c-text">
+            <!-- Search Widget -->
+            <div class="card my-4">
+                <h5 class="card-header">Search</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        <input id="myInput" type="text" class="form-control" placeholder="Search for...">
+                        <span class="input-group-btn">
+                <button class="btn c-badge text-white" type="button">Go!</button>
+              </span>
+                    </div>
                 </div>
-                <h3 th:text="${post.title}" class="card-title"></h3>
-                <p th:text="${post.body}" class="card-text"></p>
-                <input type="hidden" name="post" th:value="${post.id}">
-            </a>
+            </div>
+            <div class="card my-4">
+                <h5 class="card-header">Side Widget</h5>
+                <div class="card-body">
+                    You can put anything you want inside of these side widgets. They are easy to use, and feature the
+                    new Bootstrap 4 card containers!
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 
-
-<th:block th:replace="fragments/footer :: main-footer" />
+<th:block th:replace="fragments/footer :: main-footer"/>
 </body>
 </html>

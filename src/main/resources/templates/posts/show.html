@@ -10,7 +10,7 @@
 <nav th:replace="fragments/navbar :: navbar"></nav>
 
 <div class="container">
-    <div class="card text-center text-white bg-dark mb-3">
+    <div class="card text-center text-white c-card mt-3">
         <div class="card-header">Header</div>
         <h1 th:text="${post.title}" class="card-title"></h1>
         <p th:text="${post.body}" class="card-text"></p>
@@ -24,7 +24,7 @@
                 <button type="submit" class="btn btn-block btn-danger">Delete</button>
             </form>
         </th:block>
-        <div th:text="'Created by: ' + ${post.user.email}" class="card-footer text-muted">
+        <div th:text="'Created by: ' + ${post.user.email}" class="card-footer">
             Created by: UsersEmail
         </div>
     </div>

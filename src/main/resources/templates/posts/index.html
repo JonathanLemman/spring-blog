@@ -15,7 +15,7 @@
 
         <div class="col-md-8 mb-3">
             <h1 class="my-4 text-white"><span class="blog display-4">Blog</span>
-                <small class="c-card">All Posts</small>
+                <small class="">All Posts</small>
             </h1>
             <div th:each="post : ${posts}" class="card text-center text-white c-card mx-auto mb-4 test">
                 <a th:href="@{'/posts/' + ${post.id}}">
@@ -42,7 +42,7 @@
                     <div class="input-group">
                         <input id="myInput" type="text" class="form-control" placeholder="Search for...">
                         <span class="input-group-btn">
-                <button class="btn c-badge text-white" type="button">Go!</button>
+                <button class="btn c-badge text-white">Go!</button>
               </span>
                     </div>
                 </div>

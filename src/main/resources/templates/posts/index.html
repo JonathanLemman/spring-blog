@@ -15,7 +15,7 @@
 
         <div class="col-md-8 mb-3">
             <h1 class="my-4 text-white"><span class="blog display-4">Blog</span>
-                <small class="">All Posts</small>
+                <small class="c-card">All Posts</small>
             </h1>
             <div th:each="post : ${posts}" class="card text-center text-white c-card mx-auto mb-4 test">
                 <a th:href="@{'/posts/' + ${post.id}}">

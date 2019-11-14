@@ -11,6 +11,11 @@ a:visited {
     color: white;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
 a:hover {
     text-decoration: none;
 }
